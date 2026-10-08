@@ -27,6 +27,11 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: true,
       target: 'esnext',
+      rolldownOptions: {
+        output: {
+          codeSplitting: true,
+        },
+      },
     },
     plugins: [vue(), tailwindcss(), preloadCssPlugin()],
     server: { port: Number(env.APP_PORT) || 5173 },
