@@ -7,6 +7,10 @@ export default defineConfig(({ mode }) => {
   const baseUrl = env.VITE_DELCOM_BASEURL || 'https://open-api.delcom.org/api/v1'
 
   return {
+    build: {
+      sourcemap: true,
+      target: 'esnext',
+    },
     plugins: [vue(), tailwindcss()],
     server: { port: Number(env.APP_PORT) || 5173 },
     preview: { port: Number(env.APP_PORT) || 5173 },
