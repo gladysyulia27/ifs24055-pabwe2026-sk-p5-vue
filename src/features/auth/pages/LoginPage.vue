@@ -26,7 +26,7 @@ async function submit() {
 
 <template>
   <div class="card p-8">
-    <h2 class="text-2xl font-extrabold">Masuk</h2>
+    <h1 class="text-2xl font-extrabold">Masuk</h1>
     <p class="mt-1 text-sm text-slate-500">Silakan masuk untuk mulai melelang.</p>
     <form class="mt-6 space-y-4" novalidate @submit.prevent="submit">
       <div>

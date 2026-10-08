@@ -40,7 +40,7 @@ async function submit() {
 
 <template>
   <div class="card p-8">
-    <h2 class="text-2xl font-extrabold">Buat Akun</h2>
+    <h1 class="text-2xl font-extrabold">Buat Akun</h1>
     <p class="mt-1 text-sm text-slate-500">Daftar gratis dan mulai menawar.</p>
     <form class="mt-6 space-y-4" novalidate @submit.prevent="submit">
       <div v-for="f in fields" :key="f.id">
