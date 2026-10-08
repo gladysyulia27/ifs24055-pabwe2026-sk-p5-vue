@@ -7,6 +7,9 @@
         if (type === 'unload') return; // block unload to preserve bfcache
         return originalAddEventListener.call(window, type, listener, options);
       };
+      Object.defineProperty(window, 'onunload', {
+        set: function() {}, get: function() { return null; }
+      });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
