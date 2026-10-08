@@ -43,4 +43,16 @@ describe('router', () => {
     await router.isReady()
     expect(router.currentRoute.value.path).toBe('/auth/login')
   })
+
+  it('lazy loads all routes', async () => {
+    const promises = []
+    routes.forEach(r => {
+      if (r.component && typeof r.component === 'function' && r.component.name !== 'NotFoundPage') promises.push(r.component())
+      if (r.children) r.children.forEach(c => {
+         if (c.component && typeof c.component === 'function') promises.push(c.component())
+      })
+    })
+    await Promise.all(promises)
+    expect(promises.length).toBeGreaterThan(0)
+  })
 })

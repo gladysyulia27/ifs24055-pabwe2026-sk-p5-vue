@@ -71,10 +71,11 @@ describe('SidebarComponent', () => {
 })
 
 describe('MarkdownEditor', () => {
-  it('membuat editor, meneruskan perubahan, dan menghancurkannya', () => {
+  it('membuat editor, meneruskan perubahan, dan menghancurkannya', async () => {
     createMockPinia()
     const { emitted, unmount } = render(MarkdownEditor, { props: { modelValue: 'awal' } })
-    const instance = Editor.mock.instances[0]
+    await waitFor(() => expect(Editor.mock.instances.length).toBeGreaterThan(0))
+    const instance = Editor.mock.instances.at(-1)
     expect(instance.options.initialValue).toBe('awal')
     instance.options.events.change()
     expect(emitted()['update:modelValue'][0]).toEqual(['isi markdown'])
@@ -82,8 +83,9 @@ describe('MarkdownEditor', () => {
     expect(instance.destroy).toHaveBeenCalled()
   })
 
-  it('nilai awal default kosong', () => {
+  it('nilai awal default kosong', async () => {
     render(MarkdownEditor)
+    await waitFor(() => expect(Editor.mock.instances.length).toBeGreaterThan(0))
     expect(Editor.mock.instances.at(-1).options.initialValue).toBe('')
   })
 })
@@ -91,14 +93,16 @@ describe('MarkdownEditor', () => {
 describe('MarkdownViewer', () => {
   it('merender konten dan memperbarui saat berubah', async () => {
     const { rerender } = render(MarkdownViewer, { props: { content: '# Hai' } })
+    await waitFor(() => expect(Viewer.mock.instances.length).toBeGreaterThan(0))
     const viewer = Viewer.mock.instances.at(-1)
     expect(viewer.options.initialValue).toBe('# Hai')
     await rerender({ content: 'baru' })
     expect(viewer.setMarkdown).toHaveBeenCalledWith('baru')
   })
 
-  it('konten default kosong', () => {
+  it('konten default kosong', async () => {
     render(MarkdownViewer)
+    await waitFor(() => expect(Viewer.mock.instances.length).toBeGreaterThan(0))
     expect(Viewer.mock.instances.at(-1).options.initialValue).toBe('')
   })
 })
