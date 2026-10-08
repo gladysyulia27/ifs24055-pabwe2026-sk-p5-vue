@@ -1,13 +1,15 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue'
-import Viewer from '@toast-ui/editor/dist/toastui-editor-viewer'
-import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 
 const props = defineProps({ content: { type: String, default: '' } })
 const el = ref(null)
 let viewer
 
-onMounted(() => {
+onMounted(async () => {
+  const [{ default: Viewer }] = await Promise.all([
+    import('@toast-ui/editor/dist/toastui-editor-viewer'),
+    import('@toast-ui/editor/dist/toastui-editor-viewer.css')
+  ])
   viewer = new Viewer({ el: el.value, initialValue: props.content })
 })
 

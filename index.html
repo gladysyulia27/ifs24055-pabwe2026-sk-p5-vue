@@ -1,16 +1,7 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <script>
-      const originalAddEventListener = window.addEventListener;
-      window.addEventListener = function(type, listener, options) {
-        if (type === 'unload') return; // block unload to preserve bfcache
-        return originalAddEventListener.call(window, type, listener, options);
-      };
-      Object.defineProperty(window, 'onunload', {
-        set: function() {}, get: function() { return null; }
-      });
-    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Aplikasi pelelangan online" />
