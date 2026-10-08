@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -11,7 +12,7 @@ export default defineConfig(({ mode }) => {
       sourcemap: true,
       target: 'esnext',
     },
-    plugins: [vue(), tailwindcss()],
+    plugins: [vue(), tailwindcss(), cssInjectedByJsPlugin()],
     server: { port: Number(env.APP_PORT) || 5173 },
     preview: { port: Number(env.APP_PORT) || 5173 },
     define: {

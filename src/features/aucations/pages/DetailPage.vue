@@ -58,6 +58,7 @@ onMounted(() => {
         <div class="space-y-3 p-6">
           <h1 class="text-2xl font-extrabold">{{ a.title }}</h1>
           <p class="text-sm text-slate-500">Oleh {{ a.author.name }} &middot; ditutup {{ formatDate(a.closed_at) }}</p>
+          <h2 class="sr-only">Deskripsi Lelang</h2>
           <MarkdownViewer :content="a.description" />
         </div>
       </div>
