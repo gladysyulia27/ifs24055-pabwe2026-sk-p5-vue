@@ -30,16 +30,16 @@ async function submit() {
     <p class="mt-1 text-sm text-slate-500">Silakan masuk untuk mulai melelang.</p>
     <form class="mt-6 space-y-4" novalidate @submit.prevent="submit">
       <div>
-        <label class="label" for="email">Email</label>
-        <input id="email" type="email" class="input" :value="email.value.value" @input="email.onChange" />
+        <label class="label" for="login-email-input">Email</label>
+        <input id="login-email-input" type="email" class="input" :value="email.value.value" @input="email.onChange" />
         <p v-if="errors.email" class="mt-1 text-xs text-rose-600">{{ errors.email }}</p>
       </div>
       <div>
-        <label class="label" for="password">Kata Sandi</label>
-        <input id="password" type="password" class="input" :value="password.value.value" @input="password.onChange" />
+        <label class="label" for="login-password-input">Kata Sandi</label>
+        <input id="login-password-input" type="password" class="input" :value="password.value.value" @input="password.onChange" />
         <p v-if="errors.password" class="mt-1 text-xs text-rose-600">{{ errors.password }}</p>
       </div>
-      <button type="submit" class="btn btn-primary w-full" :disabled="auth.isAuthLogin">
+      <button id="login-submit-button" type="submit" class="btn btn-primary w-full" :disabled="auth.isAuthLogin">
         {{ auth.isAuthLogin ? 'Memproses...' : 'Masuk' }}
       </button>
     </form>
