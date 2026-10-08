@@ -12,7 +12,7 @@ import { Gavel } from 'lucide-vue-next'
       </div>
       <p class="text-sm text-brand-100">&copy; Delcom Auction</p>
     </aside>
-    <main class="flex items-center justify-center p-6">
+    <main id="main" tabindex="-1" class="flex items-center justify-center p-6">
       <div class="w-full max-w-md"><RouterView /></div>
     </main>
   </div>
