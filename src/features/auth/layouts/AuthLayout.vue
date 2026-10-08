@@ -12,8 +12,8 @@ import { Gavel } from 'lucide-vue-next'
       </div>
       <p class="text-sm text-brand-100">&copy; Delcom Auction</p>
     </aside>
-    <div class="flex items-center justify-center p-6">
+    <main class="flex items-center justify-center p-6">
       <div class="w-full max-w-md"><RouterView /></div>
-    </div>
+    </main>
   </div>
 </template>

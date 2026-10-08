@@ -24,6 +24,6 @@ onMounted(async () => {
   <div class="min-h-screen">
     <NavbarComponent @toggle-sidebar="sidebarOpen = !sidebarOpen" />
     <SidebarComponent :open="sidebarOpen" @close="sidebarOpen = false" />
-    <div class="px-4 pb-10 pt-20 lg:ml-64 lg:px-8"><RouterView /></div>
+    <main class="px-4 pb-10 pt-20 lg:ml-64 lg:px-8"><RouterView /></main>
   </div>
 </template>
